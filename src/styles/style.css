@@ -246,12 +246,29 @@ p {
     transition: .3s;
   }
 
-  .text-block{
-    font-size: 35px;
+  .desktop-menu {
+    display: none;
   }
 
-   .desktop-menu {
+  .bm-burger-button,
+  .bm-burger-bars,
+  .bm-menu,
+  .bm-item-list a {
+    display: block;
+  }
+}
+
+
+@media (min-width: 701px) {
+  .bm-burger-button,
+  .bm-burger-bars,
+  .bm-menu,
+  .bm-item-list a {
     display: none;
+  }
+
+  .desktop-menu {
+    display: flex;
   }
 
 }
