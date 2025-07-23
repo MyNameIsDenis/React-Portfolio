@@ -2,12 +2,14 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css";
 import "../src/styles/style.css";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/all";
 import github from "../src/img/github.png";
 import insta from "../src/img/insta.jpg";
 import tg from "../src/img/tg.png";
+import { slide as Menu } from "react-burger-menu";
+import React from "react";
 
 function App() {
   gsap.registerPlugin(ScrollToPlugin);
@@ -16,6 +18,36 @@ function App() {
   const projects = useRef(null);
   const scrollTo = (target) =>
     gsap.to(window, { duration: 0.6, scrollTo: target });
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+   useEffect(() => {
+    const handleClickOutside = (e) => {
+      const menu = document.querySelector(".bm-menu-wrap");
+      const burgerIcon = document.querySelector(".bm-burger-button");
+      if (
+        menuOpen &&
+        menu &&
+        !menu.contains(e.target) &&
+        (!burgerIcon || !burgerIcon.contains(e.target))
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [menuOpen]);
+
+
   return (
     <div className="App">
       <header>
@@ -23,7 +55,7 @@ function App() {
           <h3>Product Name</h3>
         </div>
 
-        <div className="right">
+        <div className="right desktop-menu">
           <span className="a" onClick={() => scrollTo(home.current)}>
             Home
           </span>
@@ -34,6 +66,17 @@ function App() {
             Projects
           </span>
         </div>
+
+        <Menu
+           isOpen={menuOpen}
+            onStateChange={handleStateChange}
+            width={"200px"}
+            right
+        className="right mobile-menu">
+          <a onClick={() => { scrollTo(home.current); closeMenu(); }} className="menu-item" href="#home">Home</a>
+          <a onClick={() => { scrollTo(technologies.current); closeMenu(); }} className="menu-item" href="#tech">Technologies</a>
+          <a onClick={() => { scrollTo(projects.current); closeMenu(); }} className="menu-item" href="#projects">Projects</a>
+        </Menu>
       </header>
 
       <main>
@@ -46,15 +89,13 @@ function App() {
         </div>
 
         <div className="circle">
-          <img src="" />
+          <img src="" alt="" />
         </div>
       </main>
 
       <div className="main-block" ref={technologies}>
         <h1>Frontend</h1>
-        <p>
-          JavaScript, TypeScript, ReactJS, Redux, HTML, CSS, NPM, BootStrap,
-        </p>
+        <p>JavaScript, TypeScript, ReactJS, Redux, HTML, CSS, NPM, BootStrap,</p>
         <p>MaterialUI, Yarn, TailwindCDD, StyledComponents</p>
 
         <h1>Backend</h1>
@@ -79,64 +120,37 @@ function App() {
           >
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/weather_project"
-                  target="blank"
-                  className="box b1"
-                ></a>
+                <a href="https://github.com/MyNameIsDenis/weather_project" target="blank" className="box b1"></a>
                 <p>Weather App</p>
               </div>
             </SplideSlide>
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/chat"
-                  target="blank"
-                  className="box b2"
-                ></a>
+                <a href="https://github.com/MyNameIsDenis/chat" target="blank" className="box b2"></a>
                 <p>Chat</p>
               </div>
             </SplideSlide>
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/Marketplace"
-                  target="blank"
-                  className="box b3"
-                ></a>
-
+                <a href="https://github.com/MyNameIsDenis/Marketplace" target="blank" className="box b3"></a>
                 <p>Marketplace</p>
               </div>
             </SplideSlide>
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/Quiz"
-                  target="blank"
-                  className="box b4"
-                ></a>
-
+                <a href="https://github.com/MyNameIsDenis/Quiz" target="blank" className="box b4"></a>
                 <p>Quiz</p>
               </div>
             </SplideSlide>
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/Paint"
-                  target="blank"
-                  className="box b5"
-                ></a>
-
+                <a href="https://github.com/MyNameIsDenis/Paint" target="blank" className="box b5"></a>
                 <p>Paint</p>
               </div>
             </SplideSlide>
             <SplideSlide className="SplideSlide">
               <div className="wrapper">
-                <a
-                  href="https://github.com/MyNameIsDenis/FlappyBird"
-                  target="blank"
-                  className="box b6"
-                ></a>
+                <a href="https://github.com/MyNameIsDenis/FlappyBird" target="blank" className="box b6"></a>
                 <p>Flappy Bird</p>
               </div>
             </SplideSlide>
@@ -146,19 +160,16 @@ function App() {
 
       <div className="footer">
         <div className="logos">
-          <a href="https://github.com/MyNameIsDenis" target="_blank">
-            <img src={github} />
+          <a href="https://github.com/MyNameIsDenis" target="_blank" rel="noopener noreferrer">
+            <img src={github} alt="GitHub" />
           </a>
-
-          <a href="https://www.instagram.com/helloiamdenis/" target="_blank">
-            <img src={insta} />
+          <a href="https://www.instagram.com/helloiamdenis/" target="_blank" rel="noopener noreferrer">
+            <img src={insta} alt="Instagram" />
           </a>
-
-          <a href="https://web.telegram.org/k/" target="_blank">
-            <img src={tg} />
+          <a href="https://web.telegram.org/k/" target="_blank" rel="noopener noreferrer">
+            <img src={tg} alt="Telegram" />
           </a>
         </div>
-
         <div className="name">
           <p>© Product Name</p>
         </div>

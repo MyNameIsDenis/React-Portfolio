@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;700&family=Titillium+Web&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;700&family=Titillium+Web&display=swap");
 
 * {
   margin: 0;
@@ -16,7 +16,7 @@ header {
   height: 60px;
   display: flex;
   padding: 0 2rem;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #ccc;
   background: rgba(255, 255, 255, 0.85);
@@ -24,8 +24,7 @@ header {
   font-weight: bold;
   position: fixed;
   z-index: 2;
-  top: 0px;
-  
+  top: 0;
 }
 
 .a {
@@ -51,14 +50,43 @@ header {
 }
 
 .left {
-  width: 65%;
+  flex: 1;
   font-size: 23px;
 }
 
 .right {
-  width: 35%;
   display: flex;
-  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.desktop-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.bm-burger-button {
+  position: fixed;
+  width: 30px;
+  height: 24px;
+  right: 20px;
+  top: 18px;
+}
+
+.bm-burger-bars {
+  background: #333;
+}
+
+.bm-menu {
+  background: #373a47;
+  padding: 20px 14px 0;
+  font-size: 18px;
+}
+
+.bm-item-list a {
+  display: block;
+  color: white;
+  padding: 8px 0;
+  text-decoration: none;
 }
 
 main {
@@ -97,7 +125,6 @@ main {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -141,7 +168,7 @@ main {
   margin: auto;
 }
 
-.splide__track{
+.splide__track {
   height: 320px;
 }
 
@@ -164,36 +191,19 @@ main {
 .box a {
   height: 300px;
 }
- 
+
 p {
   padding: 10px 0;
   font-size: 20px;
   font-weight: bold;
 }
 
-.b1 {
-  background: #2400ff;  
-}
-
-.b2 {
-  background: #00ff94;
-}
-
-.b3 {
-  background: #ff00b8;
-}
-
-.b4 {
-  background: #eada00;
-}
-
-.b5 {
-  background: #ff8400;
-}
-
-.b6 {
-  background: #e0002d;
-}
+.b1 { background: #2400ff; }
+.b2 { background: #00ff94; }
+.b3 { background: #ff00b8; }
+.b4 { background: #eada00; }
+.b5 { background: #ff8400; }
+.b6 { background: #e0002d; }
 
 .footer {
   margin-top: 160px;
@@ -207,7 +217,7 @@ p {
   letter-spacing: 50px;
 }
 
-.logos img{
+.logos img {
   width: 50px;
   height: 50px;
   margin-right: 50px;
@@ -221,4 +231,27 @@ p {
 .name {
   margin-top: 10px;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .left{
+    font-size: 15px;
+
+  }
+
+  .circle{
+    width: 650px;
+    height: 650px;
+    margin-left: -465px;
+    transition: .3s;
+  }
+
+  .text-block{
+    font-size: 35px;
+  }
+
+   .desktop-menu {
+    display: none;
+  }
+
 }
