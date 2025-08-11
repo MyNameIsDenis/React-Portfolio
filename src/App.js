@@ -29,7 +29,7 @@ function App() {
     setMenuOpen(false);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (e) => {
       const menu = document.querySelector(".bm-menu-wrap");
       const burgerIcon = document.querySelector(".bm-burger-button");
@@ -68,11 +68,11 @@ function App() {
         </div>
 
         <Menu
-           isOpen={menuOpen}
-            onStateChange={handleStateChange}
-            width={"200px"}
-            right
-        className="right mobile-menu">
+          isOpen={menuOpen}
+          onStateChange={handleStateChange}
+          width={"200px"}
+          right
+          className="right mobile-menu">
           <a onClick={() => { scrollTo(home.current); closeMenu(); }} className="menu-item" href="#home">Home</a>
           <a onClick={() => { scrollTo(technologies.current); closeMenu(); }} className="menu-item" href="#tech">Technologies</a>
           <a onClick={() => { scrollTo(projects.current); closeMenu(); }} className="menu-item" href="#projects">Projects</a>
@@ -114,6 +114,16 @@ function App() {
                 pauseOnHover: true,
                 pauseOnFocus: true,
                 speed: 0.3,
+              },
+              breakpoints: {
+                800: {
+                  perPage: 1,
+                  gap: "20px",
+                },
+                1215: {
+                  perPage: 2,
+
+                },
               },
             }}
             extensions={{ AutoScroll }}
