@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;700&family=Titillium+Web&display=swap");
 
 * {
@@ -125,6 +124,7 @@ main {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -198,12 +198,29 @@ p {
   font-weight: bold;
 }
 
-.b1 { background: #2400ff; }
-.b2 { background: #00ff94; }
-.b3 { background: #ff00b8; }
-.b4 { background: #eada00; }
-.b5 { background: #ff8400; }
-.b6 { background: #e0002d; }
+.b1 {
+  background: #2400ff;
+}
+
+.b2 {
+  background: #00ff94;
+}
+
+.b3 {
+  background: #ff00b8;
+}
+
+.b4 {
+  background: #eada00;
+}
+
+.b5 {
+  background: #ff8400;
+}
+
+.b6 {
+  background: #e0002d;
+}
 
 .footer {
   margin-top: 160px;
@@ -215,6 +232,7 @@ p {
 .logos {
   margin-left: 42%;
   letter-spacing: 50px;
+
 }
 
 .logos img {
@@ -234,12 +252,11 @@ p {
 }
 
 @media (max-width: 700px) {
-  .left{
+  .left {
     font-size: 15px;
-
   }
 
-  .circle{
+  .circle {
     width: 650px;
     height: 650px;
     margin-left: -465px;
@@ -256,10 +273,18 @@ p {
   .bm-item-list a {
     display: block;
   }
+
+  .logos {
+    margin: auto;
+    margin-left: 20%;
+  }
+
+
 }
 
 
 @media (min-width: 701px) {
+
   .bm-burger-button,
   .bm-burger-bars,
   .bm-menu,
@@ -269,6 +294,8 @@ p {
 
   .desktop-menu {
     display: flex;
+
   }
+
 
 }
